@@ -3,22 +3,27 @@ const numbersContainer = document.getElementById('numbers-container');
 
 const generateNumbers = () => {
     const numbers = new Set();
-    while (numbers.size < 5) {
+    while (numbers.size < 5) { // 5 numbers per combination
         const randomNumber = Math.floor(Math.random() * 45) + 1;
         numbers.add(randomNumber);
     }
     return Array.from(numbers);
 };
 
-const displayNumbers = (numbers) => {
-    numbersContainer.innerHTML = '';
-    for (const number of numbers) {
-        const ball = document.createElement('div');
-        ball.classList.add('number-ball');
-        ball.textContent = number;
-        ball.style.backgroundColor = getRandomColor();
-        numbersContainer.appendChild(ball);
-    }
+const displayCombinations = (combinations) => {
+    numbersContainer.innerHTML = ''; // Clear previous combinations
+    combinations.forEach(combination => {
+        const combinationDiv = document.createElement('div');
+        combinationDiv.classList.add('number-combination'); // Add a class for styling
+        combination.forEach(number => {
+            const ball = document.createElement('div');
+            ball.classList.add('number-ball');
+            ball.textContent = number;
+            ball.style.backgroundColor = getRandomColor();
+            combinationDiv.appendChild(ball);
+        });
+        numbersContainer.appendChild(combinationDiv);
+    });
 };
 
 const getRandomColor = () => {
@@ -36,10 +41,16 @@ const getRandomColor = () => {
 };
 
 generateButton.addEventListener('click', () => {
-    const newNumbers = generateNumbers();
-    displayNumbers(newNumbers);
+    const allCombinations = [];
+    for (let i = 0; i < 5; i++) { // Generate 5 combinations
+        allCombinations.push(generateNumbers());
+    }
+    displayCombinations(allCombinations);
 });
 
 // Initial generation
-const initialNumbers = generateNumbers();
-displayNumbers(initialNumbers);
+const initialAllCombinations = [];
+for (let i = 0; i < 5; i++) { // Generate 5 combinations initially
+    initialAllCombinations.push(generateNumbers());
+}
+displayCombinations(initialAllCombinations);
