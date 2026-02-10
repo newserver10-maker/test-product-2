@@ -91,3 +91,53 @@ h1 {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px var(--primary-color);
 }
+
+/* Form Styles */
+.contact-form {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.15);
+    outline: none;
+}
+
+.contact-form button[type="submit"] {
+    width: 100%;
+    margin-top: 1.5rem;
+}
